@@ -67,9 +67,11 @@ def listar_imagem(d: dict) -> None:
      if d["total"] == 0:
           print("Nenhuma imagem foi cadastrada.")
      else:
-          for imagem in d["imagens"]:
+          for indice, imagem in enumerate(d["imagens"], start=1):
+               print(f"--{indice}ª imagem ---")
                for c, v in imagem.items():
                 print(f"{c}: {v}")
+               print()
 
 def buscar_materia(d: dict) -> None:
      busca = input("Digite a matéria para buscar: ")
