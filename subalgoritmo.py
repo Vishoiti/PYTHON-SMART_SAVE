@@ -21,6 +21,10 @@ def escolher_tipo() -> str:
      print("1 - Lousa")
      print("2 - Slide")
      print("3 - Anotação")
+     print("4 - Fórmulas")
+     print("5 - Exercícios")
+     print("6 - Mapa mental")
+
      opcao = input("Digite o tipo: ")
 
      match opcao:
@@ -30,6 +34,12 @@ def escolher_tipo() -> str:
                return "Slide"
           case "3":
                return "Anotação"
+          case "4":
+               return "Fórmulas"
+          case "5":
+               return "Exercícios"
+          case "6":
+               return "Mapa mental"
           case _:
                print("Opção invalida")
 
