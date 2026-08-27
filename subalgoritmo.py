@@ -4,10 +4,12 @@ def exibir_menu(d: dict) -> None:
             PROGRAMA SMART SAVE (SOFTWARE DE ORGANIZAÇÃO DE FOTO)
         -------------------------------------------------------------   
             1 - Registrar nova imagem
-            2 - Listar imagem
-            3 - Buscar por matéria
-            4 - Mostrar total
-            5 - Sair
+            2 - Listar imagens registradas
+            3 - Buscar imagens registradas por matéria
+            4 - Mostrar total de imagens
+            5 - Excluir Imagem
+
+            7 - Sair do Programa
                 """)
 
 def criar_dados() -> dict:
@@ -25,7 +27,7 @@ def escolher_tipo() -> str:
      print("5 - Exercícios")
      print("6 - Mapa mental")
 
-     opcao = input("Digite o tipo: ")
+     opcao = input("Digite o tipo a qual a imagem se refere: ")
 
      match opcao:
           case "1":
@@ -65,7 +67,7 @@ def registrar_imagem(d: dict) -> None:
 
 def listar_imagem(d: dict) -> None:
      if d["total"] == 0:
-          print("Nenhuma imagem foi cadastrada.")
+          print("Nenhuma imagem foi cadastrada no programa.")
      else:
           for indice, imagem in enumerate(d["imagens"], start=1):
                print(f"--{indice}ª imagem ---")
@@ -74,7 +76,7 @@ def listar_imagem(d: dict) -> None:
                print()
 
 def buscar_materia(d: dict) -> None:
-     busca = input("Digite a matéria para buscar: ")
+     busca = input("Digite a matéria para a busca específica: ")
      encontrou = False
 
      for imagem in d["imagens"]:
@@ -83,4 +85,16 @@ def buscar_materia(d: dict) -> None:
                  print(f"{c}: {v}")
 
 def mostrar_total(d:dict) -> None:
-     print(f"O total de imagens registradas é {d["total"]}")
+     print(f"O total de imagens registradas no programa é {d["total"]}")
+
+def excluir_imagem(d:dict) -> None:
+     if d["total"] == 0:
+        print("Nenhuma imagem foi cadastrada no programa.")
+     else:
+          for i, imagem in enumerate(d["imagens"], start=1):
+               print(i, "-", imagem["nome"])
+
+          escolha = int(input("Digite o número da imagem para excluir: "))
+          d["imagens"].pop(escolha - 1)
+          d["total"] = d["total"] - 1
+          print("Imagem excluída com suceso!")
