@@ -1,7 +1,7 @@
 import os
 os.system("cls")
 
-from subalgoritmo import exibir_menu, criar_dados,escolher_tipo, registrar_imagem, listar_imagem, buscar_materia, mostrar_total, excluir_imagem
+from subalgoritmo import exibir_menu, criar_dados,escolher_tipo, registrar_imagem, listar_imagem, buscar_materia, mostrar_total, excluir_imagem, editar_imagem
 
 dicionario = criar_dados()
 
@@ -23,3 +23,5 @@ while True:
             mostrar_total(dicionario)
         case "5":
             excluir_imagem(dicionario)
+        case "6":
+            editar_imagem(dicionario)

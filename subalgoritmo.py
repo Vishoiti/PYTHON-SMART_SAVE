@@ -7,8 +7,8 @@ def exibir_menu(d: dict) -> None:
             2 - Listar imagens registradas
             3 - Buscar imagens registradas por matéria
             4 - Mostrar total de imagens
-            5 - Excluir Imagem
-
+            5 - Excluir imagem
+            6 - Editar uma imagem
             7 - Sair do Programa
                 """)
 
@@ -98,3 +98,23 @@ def excluir_imagem(d:dict) -> None:
           d["imagens"].pop(escolha - 1)
           d["total"] = d["total"] - 1
           print("Imagem excluída com suceso!")
+
+def editar_imagem(d: dict) -> None:
+     if d["total"] == 0:
+          print("Nenhuma imagem foi cadastrada no programa.")
+     else:
+          for i, imagem in enumerate(d["imagens"], start=1):
+               print(i, "-", imagem["nome"])
+               
+          escolha = int(input("Digite o número da imagem para editar: "))
+          posicao = escolha - 1
+
+          novoNome = input("Novo nome: ")
+          novaMateria = input("Nova matéria: ")
+          novoTipo = escolher_tipo()
+
+          d["imagens"][posicao]["nome"] = novoNome
+          d["imagens"][posicao]["materia"] = novaMateria
+          d["imagens"][posicao]["tipo"] = novoTipo
+
+          print("Imagem atualizada com sucesso!")
